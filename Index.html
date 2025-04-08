@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram HD Video Downloader</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+            color: #333;
+        }
+        h1 {
+            color: #E1306C;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #E1306C;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #C13584;
+        }
+        .video-container {
+            margin-top: 30px;
+            display: none;
+        }
+        video {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .download-btn {
+            margin-top: 15px;
+        }
+        .instructions {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instagram HD Video Downloader</h1>
+        <p>For video editors and social media creators</p>
+        
+        <div class="input-group">
+            <input type="text" id="instagramUrl" placeholder="Paste Instagram video URL here...">
+        </div>
+        
+        <button id="fetchBtn">Fetch HD Video</button>
+        
+        <div class="video-container" id="videoContainer">
+            <video id="videoPlayer" controls></video>
+            <button class="download-btn" id="downloadBtn">Download HD Video</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ol>
+                <li>Copy the URL of any Instagram video (post, reel, or IGTV)</li>
+                <li>Paste it in the field above</li>
+                <li>Click "Fetch HD Video" to preview</li>
+                <li>Download the high-quality version</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fetchBtn').addEventListener('click', async function() {
+            const url = document.getElementById('instagramUrl').value.trim();
+            
+            if (!url) {
+                alert('Please enter an Instagram video URL');
+                return;
+            }
+            
+            if (!url.includes('instagram.com')) {
+                alert('Please enter a valid Instagram URL');
+                return;
+            }
+            
+            // In a real implementation, you would call your backend service here
+            // This is just a frontend mockup
+            
+            try {
+                // Show loading state
+                this.textContent = 'Fetching...';
+                this.disabled = true;
+                
+                // Simulate API call delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // For demo purposes, we'll just show the container
+                // In a real app, you would set the video source to the fetched HD URL
+                document.getElementById('videoContainer').style.display = 'block';
+                
+                // Reset button
+                this.textContent = 'Fetch HD Video';
+                this.disabled = false;
+                
+            } catch (error) {
+                alert('Error fetching video. Please try again.');
+                console.error(error);
+                this.textContent = 'Fetch HD Video';
+                this.disabled = false;
+            }
+        });
+        
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // In a real implementation, this would trigger the download
+            alert('Download would start here. In a real app, this would save the HD video file.');
+        });
+    </script>
+</body>
+</html>
